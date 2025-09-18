@@ -1,24 +1,24 @@
 ```mermaid
 classDiagram
 
-class race{
-    +int TRACK LENGTH
-    -int NUM_HORSES
-    -Horse horses[NUM_HORSES]
-    +Race()
-    +void start()
-    }
+    class race{
+        +int TRACK LENGTH
+        -int NUM_HORSES
+        -Horse horses[NUM_HORSES]
+        +Race()
+        +void start()
+        }
 
-class Horse{
-    +int position
-    -int index
-    -int TRACK_LENGTH
-    +Horse()
-    +void init(index, trackLength)
-    +void advance()
-    +void printLane()
-    +bool isWinner()
-}
+    class Horse{
+        +int position
+        -int index
+        -int TRACK_LENGTH
+        +Horse()
+        +void init(index, trackLength)
+        +void advance()
+        +void printLane()
+        +bool isWinner()
+    }
 
 ```
     in header

@@ -1,18 +1,44 @@
-#ifndef HORSE_H_EXIST
-#define HORSE_H_EXIST
+#include<iostream>
+#include<string>
+#include<random>
+#include "horse.h"
 
-class Horse{
-	private:
-		int position;
-		int id;
-		int trackLength;
+std::random_device rd;
+std::uniform_int_distribution<int> dist(0, 1);
+Horse::Horse(){
+	Horse::id = 0;
+	Horse::position = 0;
+	Horse::trackLength = 15;	
+}
 
-	public:
-		Horse();
-		void init(int id, int trackLength);
-		void advance();
-		void printLane();
-		void isWinner();
-};
+void Horse::init(int id, int trackLength){
+	Horse::id = id;
+	Horse::trackLength = trackLength;
+}
 
-#endif
+void Horse::advance(){
+	int coin = dist(rd);
+	Horse::position += coin;
+}
+
+void Horse::printLane(){
+	for(int i = 0; i < Horse::trackLength; i++){
+		if (Horse::position == i){
+			std::cout<<Horse::id; 
+		}else{
+			std::cout<<".";
+		}//end else
+	
+	}//end if
+	std::cout<<std::endl;
+}
+
+bool Horse::isWinner(){
+	bool result = false; 
+
+	if(Horse::position == Horse::trackLength){
+		result = true;
+		std::cout<<"Horse"<<Horse::id<<"won";
+	}
+	return result;
+}

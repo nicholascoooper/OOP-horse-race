@@ -1,16 +1,25 @@
-#ifndef RACE_H_EXIST
-#define RACE_H_EXIST
-
+#include "race.h"
 #include "horse.h"
+#include<iostream>
 
-class Race{
-	private:
-		const int TRACK_LENGTH = 15;
-		const static int NUM_HORSES = 5;
-		Horse horses[NUM_HORSES];
-	public:
-		Race();
-		void start();
-};
+Race::Race(){
+	for(int i=0;i <Race::NUM_HORSES; i++){
+	Race::horses[i].init(i, Race::TRACK_LENGTH);
+	}
+}
 
-#endif
+void Race::start(){
+	bool keepGoing = true;
+
+	while (keepGoing){
+		for (Horse horse: Race::horses){
+			horse.advance();
+			horse.printLane();
+			if (horse.isWinner()){
+				keepGoing = false;
+			}//end if
+		}//end for
+	std::cin.get();
+	}//end keepGoing	
+}//end start
+

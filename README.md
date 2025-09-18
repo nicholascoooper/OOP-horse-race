@@ -19,7 +19,7 @@ classDiagram
         +void printLane()
         +bool isWinner()
     }
-
+    race o-- Horses
 ```
     in header
         int TRACKLENGTH to 15
